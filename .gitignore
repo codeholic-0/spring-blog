@@ -6,3 +6,6 @@
 *.class
 
 *.log
+
+application-prod.properties
+**/META-INF/
