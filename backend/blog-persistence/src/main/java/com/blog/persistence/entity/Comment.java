@@ -19,24 +19,23 @@ public class Comment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     @Column(nullable = false)
     private String body;
+
     @Column(nullable = false)
     private String author;
 
-    public Post getPost() {
-        return this.post;
-    }
-
-    public void setPost(Post post) {
-        this.post = post;
-    }
     @Column(updatable = false)
     private LocalDateTime createdAt;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "post_id", nullable = false)
     private Post post;
+
+    public Comment() {
+    }
+
     @PrePersist
     private void onCreate() {
         this.createdAt = LocalDateTime.now();
@@ -74,7 +73,11 @@ public class Comment {
         this.createdAt = createdAt;
     }
 
-    public Comment() {
+    public Post getPost() {
+        return this.post;
     }
 
+    public void setPost(Post post) {
+        this.post = post;
+    }
 }

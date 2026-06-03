@@ -29,10 +29,14 @@ public class Post {
     private String author;
     @Column(updatable = false)
     private LocalDateTime createdAt;
+
     private LocalDateTime updatedAt;
 
     @OneToMany(mappedBy = "post", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Comment> comments = new ArrayList<>();
+
+    public Post() {
+    }
 
     @PrePersist
     private void onCreate() {
@@ -99,8 +103,5 @@ public class Post {
 
     public void setComments(List<Comment> comments) {
         this.comments = comments;
-    }
-
-    public Post() {
     }
 }
