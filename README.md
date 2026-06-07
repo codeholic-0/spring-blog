@@ -189,9 +189,3 @@ Browser:     http://localhost:5173
 ```
 
 The Vite dev server proxies `/api` → `http://localhost:8080`, so all API calls from the frontend work without CORS configuration during development.
-
----
-
-## License
-
-MIT
